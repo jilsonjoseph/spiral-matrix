@@ -30,6 +30,7 @@ public class Main {
 
         printMatrix(matrix);
         spiralPrintMatrix(matrix);
+        recursiveSpiralMatrixPrint(0,r-1, 0, c-1, matrix);
 
     }
 
@@ -71,5 +72,20 @@ public class Main {
             cs++;
         }
 
+    }
+
+    public static void recursiveSpiralMatrixPrint(int rs, int re, int cs, int ce, int[][] matrix){
+        if(rs>re || cs>ce)
+            return;
+
+        for(int k = rs; k<=ce; k++)
+            System.out.print(" "+matrix[rs][k]);
+        for(int k = rs+1; k<=re; k++)
+            System.out.print(" "+matrix[k][ce]);
+        for (int k = ce-1; k>=cs; k--)
+            System.out.print(" "+matrix[re][k]);
+        for(int k = re-1; k>=rs+1; k--)
+            System.out.print(" "+matrix[k][cs]);
+        recursiveSpiralMatrixPrint(++rs,--re, ++cs, --ce, matrix);
     }
 }
